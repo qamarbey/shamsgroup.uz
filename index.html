@@ -76,10 +76,12 @@ header nav a:hover{opacity:1}
 .btn.ln:hover{color:var(--tun);box-shadow:none}
 
 /* HERO */
-.hero{min-height:100svh;padding:130px 0 60px;overflow:hidden;display:flex;align-items:center}
-.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center;width:100%}
+.hero{min-height:100svh;padding:130px 0 90px;overflow:hidden;display:flex;align-items:flex-end;background:transparent}
+.hero{color:var(--qum)}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.hero .wrap>div{max-width:640px}
 .hero h1{font-size:clamp(38px,4.3vw,68px);margin:24px 0 22px}
-.hero .lead{max-width:560px;font-size:21px}
+.hero .lead{max-width:560px;font-size:21px;color:var(--tosh2)}
 .pill{margin-top:30px;display:flex;gap:8px;background:var(--qum);border-radius:999px;padding:8px;max-width:620px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
 .pill input{flex:1;min-width:0;border:0;background:transparent;font:700 17px Manrope;color:var(--tun);padding:0 18px;outline:none}
 .pill input::placeholder{color:#8A909C}
@@ -93,24 +95,33 @@ header nav a:hover{opacity:1}
 .sent .ok-msg{display:block}
 .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
 
-/* orbit (refined) */
-.orbit{position:relative;width:min(520px,calc(100% - 90px));aspect-ratio:1;margin-left:auto;margin-right:90px}
-.ring{position:absolute;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(162,169,183,.14)}
-.ring.ds{border-style:dashed;border-color:rgba(162,169,183,.10)}
-.spin{position:absolute;inset:0;animation:spin var(--d) linear infinite}
-.spin.rev{animation-direction:reverse}
-.node{position:absolute;left:50%;top:50%;width:0;height:0;transform:rotate(var(--a)) translateX(var(--r)) rotate(calc(-1 * var(--a)))}
-.pl{position:absolute;left:-5px;top:-5px;width:10px;height:10px;transform-origin:5px 5px;animation:spinr var(--d) linear infinite}
-.spin.rev .pl{animation-direction:reverse}
-.pl i{position:absolute;inset:0;border-radius:50%;background:var(--sun);box-shadow:0 0 0 5px rgba(244,166,42,.14)}
-.pl i.q{background:var(--qum);box-shadow:0 0 0 5px rgba(246,241,231,.08)}
-.pl span{position:absolute;left:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-weight:800;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tosh2)}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes spinr{to{transform:rotate(-360deg)}}
-.core{position:absolute;left:50%;top:50%;width:32%;aspect-ratio:1;border-radius:50%;background:var(--sun);transform:translate(-50%,-50%);display:grid;place-items:center;color:var(--tun);z-index:2}
-.core b{font-family:Unbounded;font-weight:700;font-size:clamp(20px,2.3vw,30px);letter-spacing:-.05em}
-.core b i{font-style:normal;color:var(--oq)}
-.halo{position:absolute;left:50%;top:50%;width:42%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(244,166,42,.35);transform:translate(-50%,-50%)}
+/* 3D scene + HUD */
+#gl{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;transition:opacity .6s}
+main{position:relative;z-index:1}
+.hud{position:fixed;inset:0;z-index:3;pointer-events:none;transition:opacity .5s}
+.hud.off{opacity:0}
+.hud .c{position:absolute;font-weight:800;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tosh2);line-height:1.8}
+.hud .c b{color:var(--qum);font-weight:800}
+.hud .tr{right:28px;top:104px;text-align:right}
+.hud .tr p{margin-top:8px;max-width:250px;margin-left:auto;font-size:13px;letter-spacing:.02em;text-transform:none;color:var(--qum);opacity:.75;font-weight:600;line-height:1.5}
+.hud .br{right:28px;bottom:26px;text-align:right}
+.hud .bc{left:50%;bottom:26px;transform:translateX(-50%);text-align:center;transition:opacity .4s}
+.hud .bc i{display:block;width:1px;height:28px;background:var(--tosh2);margin:8px auto 0;transform-origin:top;animation:drip 2s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.hud svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tag3{position:absolute;left:0;top:0;font-weight:800;font-size:11px;letter-spacing:.18em;color:var(--qum);white-space:nowrap;opacity:0;will-change:transform}
+.tag3 i{font-style:normal;color:var(--sun);margin-right:6px}
+.fsun{display:none;position:absolute;right:6%;top:22%;width:min(420px,40vw);aspect-ratio:1;border-radius:50%;background:var(--sun)}
+.nogl .fsun{display:block}
+.nogl #gl{display:none}
+/* story */
+.story{position:relative;height:330vh}
+.story .stick{position:sticky;top:0;height:100svh;pointer-events:none}
+.caps{position:relative;max-width:var(--wrap);height:100%;margin:0 auto;padding:0 24px}
+.cap{position:absolute;left:24px;bottom:15vh;max-width:640px;opacity:0;color:var(--qum)}
+.cap .k{font-weight:800;font-size:12px;letter-spacing:.22em;color:var(--sun)}
+.cap h2{font-size:clamp(30px,4.3vw,62px);margin-top:16px}
+.cap p{margin-top:16px;font-size:19px;color:var(--tosh2);max-width:520px}
 .proof{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:15px;color:var(--qum);border:1px solid var(--line2);border-radius:999px;padding:9px 16px 9px 10px}
 .proof i{width:22px;height:22px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-style:normal;color:var(--tun);font-size:10px;font-weight:800}
 
@@ -275,7 +286,6 @@ footer .logo{color:var(--qum);font-size:22px}
 @media (max-width:1060px){
   header nav{display:none}
   .hero .wrap{grid-template-columns:1fr}
-  .orbit{margin:30px auto 0;width:min(440px,74%);transform:translateX(-30px)}
   .pcard{grid-template-columns:1fr;padding:36px;min-height:0}
   .cgrid,.final .wrap{grid-template-columns:1fr}
   .bigsun{left:50%;top:auto;bottom:-420px;width:760px}
@@ -303,9 +313,11 @@ footer .logo{color:var(--qum);font-size:22px}
   .case.big{padding:30px 24px}
   .cnt{gap:26px}
   .fcard{padding:26px 20px}
-  .orbit{width:72%;margin-left:3%;transform:none}
-  .core b{font-size:16px}
-  .orbit .spin.in .pl span{display:none}
+  .hero{padding-top:46vh;padding-bottom:110px}
+  .hud .tr,.hud .br,.hud .bc,.tag3,#net{display:none}
+  .cap{bottom:12vh;right:24px}
+  .cap p{font-size:17px}
+  .fsun{right:50%;transform:translateX(50%);top:12vh;width:62vw}
   .pl span{font-size:9.5px;letter-spacing:.14em;left:16px}
   .faq{margin-top:80px}
   .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(16,24,38,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .45s var(--ease)}
@@ -315,12 +327,20 @@ footer .logo{color:var(--qum);font-size:22px}
   footer{padding-bottom:100px}
 }
 @media (prefers-reduced-motion:reduce){
-  .spin,.pl,.typing i{animation:none!important}
+  .typing i,.hud .bc i{animation:none!important}
 }
 </style>
 </head>
 <body>
 <div class="cursor" aria-hidden="true"></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="hud" id="hud" aria-hidden="true">
+  <svg id="net"><polyline id="netl" fill="none" stroke="#A2A9B7" stroke-opacity=".55" stroke-width="1" points=""/></svg>
+  <div class="tag3"><i>01</i>KASSA</div><div class="tag3"><i>02</i>OMBOR</div><div class="tag3"><i>03</i>XARID</div><div class="tag3"><i>04</i>MOLIYA</div><div class="tag3"><i>05</i>KADRLAR</div><div class="tag3"><i>06</i>SOTUV</div>
+  <div class="c tr">////// Manifest<p>Biznesingizdagi har bir takroriy jarayonni sun’iy intellekt bajaradigan tizimga aylantiramiz.</p></div>
+  <div class="c br"><b id="clock">--:--</b> · Toshkent<br>41.31°N · 69.28°E</div>
+  <div class="c bc">Pastga aylantiring<i></i></div>
+</div>
 
 <header id="hdr">
   <div class="wrap">
@@ -339,7 +359,8 @@ footer .logo{color:var(--qum);font-size:22px}
 <main id="top">
 
 <!-- HERO -->
-<section class="hero dark">
+<section class="hero">
+  <div class="fsun" aria-hidden="true"></div>
   <div class="wrap">
     <div>
       <span class="proof hero-in"><i>●</i>Hozir quryapmiz: Mega Plus supermarketi — 11 boʻlim</span>
@@ -360,29 +381,16 @@ footer .logo{color:var(--qum);font-size:22px}
       </form>
     </div>
 
-    <div class="orbit hero-in" aria-hidden="true">
-      <div class="ring" style="width:60%;height:60%"></div>
-      <div class="ring ds" style="width:80%;height:80%"></div>
-      <div class="ring" style="width:100%;height:100%"></div>
-      <div class="halo"></div>
-      <div class="spin in" style="--d:120s">
-        <div class="node" style="--a:200deg;--r:var(--r1)"><div class="pl"><i></i><span>Kassa</span></div></div>
-        <div class="node" style="--a:320deg;--r:var(--r1)"><div class="pl"><i class="q"></i><span>Ombor</span></div></div>
-        <div class="node" style="--a:80deg;--r:var(--r1)"><div class="pl"><i></i><span>Xarid</span></div></div>
       </div>
-      <div class="spin rev" style="--d:170s">
-        <div class="node" style="--a:20deg;--r:var(--r2)"><div class="pl"><i class="q"></i><span>Sotuv</span></div></div>
-        <div class="node" style="--a:115deg;--r:var(--r2)"><div class="pl"><i></i><span>Moliya</span></div></div>
-        <div class="node" style="--a:205deg;--r:var(--r2)"><div class="pl"><i class="q"></i><span>Kadrlar</span></div></div>
-        <div class="node" style="--a:290deg;--r:var(--r2)"><div class="pl"><i></i><span>Marketing</span></div></div>
-      </div>
-      <div class="spin" style="--d:230s">
-        <div class="node" style="--a:150deg;--r:var(--r3)"><div class="pl"><i></i><span>Tahlil</span></div></div>
-        <div class="node" style="--a:330deg;--r:var(--r3)"><div class="pl"><i class="q"></i><span>Mijozlar</span></div></div>
-      </div>
-      <div class="core"><b>shams<i>.</i></b></div>
-    </div>
-  </div>
+</section>
+
+<!-- STORY (3D) -->
+<section class="story" id="story" aria-label="Tizim qanday ishlaydi">
+  <div class="stick"><div class="caps">
+    <div class="cap"><div class="k">01 / 03 · BUGUN</div><h2>Daftar. Excel. <span class="sun">47 ta oʻqilmagan</span> xabar.</h2><p>Har bir jarayon alohida, hech biri bir-birini koʻrmaydi. Pul va vaqt orada yoʻqoladi.</p></div>
+    <div class="cap"><div class="k">02 / 03 · TIZIM</div><h2>Har bir jarayon — <span class="sun">oʻz joyida.</span></h2><p>Kassa, ombor, xarid, moliya va xodimlar bitta tizimga ulanadi. Sun’iy intellekt ularni birga koʻradi.</p></div>
+    <div class="cap"><div class="k">03 / 03 · NATIJA</div><h2>Har kuni. <span class="sun">Oʻz vaqtida.</span></h2><p>Takroriy ishni tizim bajaradi, siz esa har kuni ertalab butun biznesni bitta ekranda koʻrasiz.</p></div>
+  </div></div>
 </section>
 
 <!-- MARQUEE -->
@@ -675,10 +683,7 @@ const fine = matchMedia('(pointer: fine)').matches;
 const anim = !!window.gsap && !reduce;
 document.documentElement.classList.add(anim ? 'js' : 'no-anim');
 
-/* orbit radii from actual size */
-function orbitR(){ const o = document.querySelector('.orbit'); if (!o) return; const w = o.offsetWidth;
-  o.style.setProperty('--r1', (w*.30)+'px'); o.style.setProperty('--r2', (w*.40)+'px'); o.style.setProperty('--r3', (w*.50)+'px'); }
-orbitR(); addEventListener('resize', orbitR);
+
 
 /* smooth scroll */
 let lenis = null;
@@ -745,16 +750,8 @@ if (anim) {
   gsap.timeline({ delay: .15 })
     .to('.hero .proof', { opacity: 1, y: 0, filter: 'blur(0px)', duration: .45, ease: E })
     .to(hw, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .35, stagger: .1, ease: E }, '-=.2')
-    .to('.hero .lead, .hero .lead-form', { opacity: 1, y: 0, filter: 'blur(0px)', duration: .45, stagger: .12, ease: E }, '-=.15')
-    .to('.orbit', { opacity: 1, y: 0, filter: 'blur(0px)', duration: .6, ease: E }, .2)
-    .from('.orbit .ring, .orbit .halo', { scale: .6, opacity: 0, duration: 1.2, stagger: .1, ease: 'expo.out' }, .2)
-    .from('.orbit .core', { scale: .4, opacity: 0, duration: 1, ease: 'expo.out' }, .3)
-    .from('.orbit .pl', { opacity: 0, filter: 'blur(6px)', duration: .5, stagger: .06, ease: E }, .7);
-  gsap.to('.orbit', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  if (fine) { const core = document.querySelector('.orbit .core'), rings = document.querySelectorAll('.orbit .ring, .orbit .halo');
-    addEventListener('mousemove', e => { const cx = e.clientX / innerWidth - .5, cy = e.clientY / innerHeight - .5;
-      gsap.to(core, { x: cx * 16, y: cy * 16, duration: 1, ease: E, overwrite: 'auto' });
-      rings.forEach((r, i) => gsap.to(r, { x: -cx * (6 + i * 4), y: -cy * (6 + i * 4), duration: 1.2, ease: E, overwrite: 'auto' })); }); }
+    .to('.hero .lead, .hero .lead-form', { opacity: 1, y: 0, filter: 'blur(0px)', duration: .45, stagger: .12, ease: E }, '-=.15');
+
 
   /* section headings: word reveal on enter */
   document.querySelectorAll('.split').forEach(el => {
@@ -896,6 +893,194 @@ if (anim) {
     }
   }));
 })();
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { RGBShiftShader } from 'three/addons/shaders/RGBShiftShader.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const canvas = document.getElementById('gl'), hud = document.getElementById('hud');
+const reduceM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W = innerWidth, H = innerHeight, mobile = W < 760;
+
+/* clock (Toshkent) */
+const clk = document.getElementById('clock');
+const tick = () => clk.textContent = new Intl.DateTimeFormat('uz-UZ', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Tashkent' }).format(new Date());
+tick(); setInterval(tick, 1000);
+
+let renderer;
+try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' }); }
+catch (e) { document.documentElement.classList.add('nogl'); }
+
+if (renderer) {
+  renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.5 : 1.75));
+  renderer.setSize(W, H);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  const TUN = new THREE.Color('#101826'), SUN = new THREE.Color('#F4A62A');
+  const scene = new THREE.Scene();
+  scene.background = TUN.clone();
+  scene.fog = new THREE.FogExp2(0x101826, 0.042);
+
+  const camera = new THREE.PerspectiveCamera(mobile ? 52 : 36, W / H, .1, 300);
+
+  /* --- sun of blocks --- */
+  const sun = new THREE.Group(); scene.add(sun);
+  const R = 3;
+  const coreMat = new THREE.MeshBasicMaterial({ color: SUN.clone() });
+  const core = new THREE.Mesh(new THREE.SphereGeometry(R * .84, 64, 32), coreMat); sun.add(core);
+  const inner = new THREE.PointLight(0xF4A62A, 60, 26, 2); sun.add(inner);
+
+  const N = mobile ? 150 : 240;
+  const geo = new RoundedBoxGeometry(.6, .42, .36, 3, .06);
+  const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .6, metalness: .1 });
+  const mesh = new THREE.InstancedMesh(geo, mat, N); sun.add(mesh);
+  const T = [], S = [], D = [], AX = [];
+  const o = new THREE.Object3D(), ga = Math.PI * (3 - Math.sqrt(5)), col = new THREE.Color();
+  for (let i = 0; i < N; i++) {
+    const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), th = ga * i;
+    const dir = new THREE.Vector3(Math.cos(th) * r, y, Math.sin(th) * r);
+    o.position.copy(dir).multiplyScalar(R); o.lookAt(dir.clone().multiplyScalar(R * 2)); o.rotateZ((Math.random() - .5) * .3);
+    T.push({ p: o.position.clone(), q: o.quaternion.clone() });
+    S.push({ p: new THREE.Vector3((Math.random() - .5) * 30, (Math.random() - .35) * 14, (Math.random() - .5) * 18 - 2),
+             q: new THREE.Quaternion().setFromEuler(new THREE.Euler(Math.random() * 6, Math.random() * 6, Math.random() * 6)) });
+    D.push(Math.random()); AX.push(new THREE.Vector3(Math.random() - .5, Math.random() - .5, Math.random() - .5).normalize());
+    // Tun-family blocks, a few Qum (paper) blocks
+    if (Math.random() < .1) col.set('#cfc6b3'); else col.setHSL(.615, .22, .15 + Math.random() * .07);
+    mesh.setColorAt(i, col);
+  }
+  mesh.instanceColor.needsUpdate = true;
+
+  /* --- terrain (dunes) --- */
+  const gg = new THREE.PlaneGeometry(160, 160, mobile ? 100 : 180, mobile ? 100 : 180); gg.rotateX(-Math.PI / 2);
+  const gp = gg.attributes.position;
+  for (let i = 0; i < gp.count; i++) {
+    const x = gp.getX(i), z = gp.getZ(i), d = Math.hypot(x, z);
+    const h = Math.sin(x * .16) * .7 + Math.cos(z * .13) * .6 + Math.sin((x + z) * .06) * 1.6 + Math.sin(x * .5 + z * .3) * .15 + (Math.random() - .5) * .08;
+    gp.setY(i, h * Math.min(1, Math.max(0, (d - 7) / 18)) );
+  }
+  gg.computeVertexNormals();
+  const ground = new THREE.Mesh(gg, new THREE.MeshStandardMaterial({ color: 0x1a2440, roughness: .95, flatShading: true }));
+  ground.position.y = -3.6; scene.add(ground);
+
+  /* --- stars --- */
+  const sg = new THREE.BufferGeometry(), sp = [];
+  for (let i = 0; i < 700; i++) { const t = Math.random() * Math.PI * 2, ph = Math.random() * .45 + .05, rr = 90;
+    sp.push(Math.cos(t) * Math.cos(ph) * rr, Math.sin(ph) * rr * .6 + 6, Math.sin(t) * Math.cos(ph) * rr - 30); }
+  sg.setAttribute('position', new THREE.Float32BufferAttribute(sp, 3));
+  const stars = new THREE.Points(sg, new THREE.PointsMaterial({ color: 0xF6F1E7, size: .18, transparent: true, opacity: .55, fog: false }));
+  scene.add(stars);
+
+  scene.add(new THREE.HemisphereLight(0x9fb0d6, 0x101826, .45));
+  const moon = new THREE.DirectionalLight(0xc9d4ff, .7); moon.position.set(-6, 10, 6); scene.add(moon);
+
+  /* --- post --- */
+  const composer = new EffectComposer(renderer);
+  composer.addPass(new RenderPass(scene, camera));
+  const bloom = new UnrealBloomPass(new THREE.Vector2(W, H), .8, .55, .55); composer.addPass(bloom);
+  const rgb = new ShaderPass(RGBShiftShader); rgb.uniforms.amount.value = 0; composer.addPass(rgb);
+  composer.addPass(new OutputPass());
+
+  /* --- HUD anchors: 6 front-facing blocks --- */
+  const tags = [...document.querySelectorAll('.tag3')], netl = document.getElementById('netl');
+  const cand = T.map((t, i) => ({ i, t })).filter(o => o.t.p.z > 1.6 && Math.abs(o.t.p.y) < 2.2);
+  const pick = []; const want = [[-1.6, 1.3], [.4, 1.9], [1.9, .6], [1.1, -1.2], [-.8, -1.6], [-2.1, -.2]];
+  want.forEach(([x, y]) => { let best = null, bd = 1e9; cand.forEach(c => { const dd = (c.t.p.x - x) ** 2 + (c.t.p.y - y) ** 2; if (dd < bd && !pick.includes(c.i)) { bd = dd; best = c.i; } }); pick.push(best); });
+
+  /* --- captions --- */
+  const caps = [...document.querySelectorAll('.cap')]; let capIdx = -1;
+  const showCap = k => { if (k === capIdx) return; capIdx = k;
+    caps.forEach((c, j) => { if (!window.gsap) { c.style.opacity = j === k ? 1 : 0; return; }
+      gsap.to(c, j === k ? { opacity: 1, y: 0, filter: 'blur(0px)', duration: .55, ease: 'power3.out' } : { opacity: 0, y: -20, filter: 'blur(8px)', duration: .35, ease: 'power2.in' }); }); };
+  if (window.gsap) gsap.set(caps, { opacity: 0, y: 30, filter: 'blur(8px)' });
+
+  /* --- state --- */
+  const story = document.getElementById('story'), bc = document.querySelector('.hud .bc');
+  const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+  const eio = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  let mx = 0, my = 0, cmx = 0, cmy = 0, lastY = scrollY, vel = 0, t0 = performance.now(), last = t0;
+  addEventListener('mousemove', e => { mx = e.clientX / W - .5; my = e.clientY / H - .5; });
+  addEventListener('resize', () => { W = innerWidth; H = innerHeight; mobile = W < 760; camera.aspect = W / H; camera.fov = mobile ? 52 : 36; camera.updateProjectionMatrix(); renderer.setSize(W, H); composer.setSize(W, H); });
+
+  const v1 = new THREE.Vector3(), q1 = new THREE.Quaternion(), wp = new THREE.Vector3();
+  function frame(now) {
+    requestAnimationFrame(frame);
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    const time = (now - t0) / 1000;
+    const y = scrollY, top = story.offsetTop, len = story.offsetHeight - H;
+    const p = Math.min(1, Math.max(0, (y - top) / len));       // story progress
+    const hp = Math.min(1, y / Math.max(1, top));               // hero → story
+    const active = y < top + story.offsetHeight + 40;
+    canvas.style.opacity = active ? 1 : 0; hud.classList.toggle('off', !active || y > top + len * .98);
+    if (!active) return;
+
+    // assembly: intro (load) → explode (p 0–.3) → assemble (.3–.68) → rise (.68–1)
+    const intro = reduceM ? 1 : eio(Math.min(1, Math.max(0, (time - .4) / 2.8)));
+    let A = p <= 0.001 ? intro : (p < .3 ? 1 - ss(0, .3, p) : ss(.3, .68, p));
+    if (p <= 0.001) A = Math.min(intro, 1 - hp * 0); // hero keeps assembled sun
+    const rise = ss(.68, 1, p);
+    showCap(p < .02 ? -1 : p < .3 ? 0 : p < .68 ? 1 : 2);
+
+    // sun placement: right side in hero (desktop), centre in story
+    const toC = ss(0, 1, hp);
+    sun.position.set(mobile ? 0 : 5.6 - 2.2 * toC, mobile ? 4.2 + rise * 1.2 : .5 * (1 - toC) + rise * 2.4 - .2, 0);
+    sun.scale.setScalar(mobile ? .78 : .82 + .18 * toC);
+    sun.rotation.y += dt * (.07 + (1 - A) * .05);
+    sun.rotation.x = Math.sin(time * .3) * .05;
+
+    // blocks
+    for (let i = 0; i < N; i++) {
+      const e = eio(Math.min(1, Math.max(0, (A - D[i] * .35) / .65)));
+      const s = S[i];
+      v1.copy(s.p); v1.y += Math.sin(time * .6 + i) * .25;
+      v1.lerp(T[i].p, e);
+      q1.copy(s.q); q1.multiply(new THREE.Quaternion().setFromAxisAngle(AX[i], time * .25 * (1 - e)));
+      q1.slerp(T[i].q, e);
+      o.position.copy(v1); o.quaternion.copy(q1); o.scale.setScalar(1); o.updateMatrix(); mesh.setMatrixAt(i, o.matrix);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+
+    // glow
+    const g = .25 + .75 * A;
+    coreMat.color.copy(SUN).multiplyScalar(.3 + .85 * g + rise * .25);
+    core.scale.setScalar(.38 + .62 * A);
+    inner.intensity = 20 + 70 * A + rise * 30;
+    bloom.strength = .4 + .5 * A + rise * .28;
+    scene.fog.density = .042 - rise * .012;
+    stars.material.opacity = .55 * (1 - rise * .6);
+
+    // camera: dolly + mouse
+    cmx += (mx - cmx) * .04; cmy += (my - cmy) * .04;
+    camera.position.set(cmx * 1.4, 1.6 - cmy * .8 + rise * .3, (mobile ? 17 : 14) - hp * 1.5 + rise * 3);
+    camera.lookAt(mobile ? 0 : sun.position.x * .2, mobile ? .6 : sun.position.y * .6 + .2, 0);
+    bc.style.opacity = y < 60 ? 1 : 0;
+
+    // chromatic aberration from scroll speed
+    const v = Math.abs(y - lastY) / Math.max(dt, .001); lastY = y; vel += (v - vel) * .2;
+    rgb.uniforms.amount.value = reduceM ? 0 : Math.min(.0045, vel * .0000028);
+
+    composer.render();
+
+    // HUD constellation
+    const hv = ss(.82, 1, A) * (1 - rise);
+    const pts = [];
+    pick.forEach((idx, k) => {
+      wp.copy(T[idx].p).applyMatrix4(sun.matrixWorld).project(camera);
+      const sx = (wp.x * .5 + .5) * W, sy = (-wp.y * .5 + .5) * H;
+      tags[k].style.transform = `translate(${sx + 10}px, ${sy - 7}px)`; tags[k].style.opacity = hv;
+      pts.push(`${sx.toFixed(1)},${sy.toFixed(1)}`);
+    });
+    netl.setAttribute('points', pts.join(' ')); netl.style.opacity = hv;
+  }
+  requestAnimationFrame(frame);
+}
 </script>
 </body>
 </html>
