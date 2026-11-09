@@ -41,7 +41,7 @@ h1,h2,h3{font-family:Unbounded,sans-serif;letter-spacing:-.03em;line-height:1.05
 .solid{background:var(--glass2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--edge);border-radius:var(--r)}
 
 /* world */
-#gl{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block}
+#gl{position:fixed;left:0;top:0;width:100vw;height:100vh;height:100lvh;z-index:0;display:block}
 .nogl #gl{display:none}
 main,footer{position:relative;z-index:2}
 section{position:relative}
@@ -181,7 +181,7 @@ header nav a:hover{opacity:1}
 .cnt small{font-size:14px;color:var(--tosh);font-weight:700}
 .mods{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
 .mods span{font-size:13px;font-weight:800;border:1px solid rgba(16,24,38,.15);border-radius:999px;padding:7px 12px}
-.case .ph{height:200px;overflow:hidden;border-radius:18px;margin:-12px -12px 20px}
+.case .ph{height:200px;overflow:hidden;border-radius:18px;margin:-12px -12px 20px;background:#E9E1D1}
 .case .ph img{width:100%;height:125%;object-fit:cover}
 .ba{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;font-size:14px}
 .ba div{border-radius:16px;padding:14px;background:rgba(16,24,38,.05)}
@@ -747,6 +747,8 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 const canvas = document.getElementById('gl');
 const reduceM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let W = innerWidth, H = innerHeight, mobile = W < 760;
+const cvs = () => { W = canvas.clientWidth || innerWidth; H = canvas.clientHeight || innerHeight; };
+cvs();
 
 /* HUD: clock, section index, progress */
 const clk = document.getElementById('clock');
@@ -760,14 +762,14 @@ try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPrefere
 catch (e) { document.documentElement.classList.add('nogl'); }
 
 if (renderer) {
-  renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.5 : 1.75));
-  renderer.setSize(W, H);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setSize(W, H, false);
   renderer.toneMapping = THREE.NoToneMapping;
 
   const QUM = new THREE.Color('#F6F1E7'), SUN = new THREE.Color('#F4A62A');
   const scene = new THREE.Scene();
   scene.background = QUM.clone();
-  scene.fog = new THREE.Fog(0xF6F1E7, 16, 46);
+  scene.fog = new THREE.Fog(0xF6F1E7, 13, 38);
   const camera = new THREE.PerspectiveCamera(mobile ? 52 : 36, W / H, .1, 300);
 
   /* sun core */
@@ -778,7 +780,7 @@ if (renderer) {
   /* blocks */
   const R = 3, N = mobile ? 150 : 240;
   const geo = new RoundedBoxGeometry(.6, .42, .36, 3, .06);
-  const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .7, metalness: .05 });
+  const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .85, metalness: 0 });
   const mesh = new THREE.InstancedMesh(geo, mat, N); scene.add(mesh);
   const col = new THREE.Color(), o = new THREE.Object3D(), ga = Math.PI * (3 - Math.sqrt(5));
   const SPH = [], SCA = [], RNG = [], BAR = [], D = [], AX = [];
@@ -794,7 +796,7 @@ if (renderer) {
     RNG.push({ r: rr, a, y: (Math.random() - .5) * .25, w: .12 - ring * .03 });
     D.push(Math.random()); AX.push(new THREE.Vector3(Math.random() - .5, Math.random() - .5, Math.random() - .5).normalize());
     const u = Math.random();
-    if (u < .5) col.set('#1d2638'); else if (u < .8) col.set('#efe8da'); else col.set('#5B6270');
+    if (u < .45) col.set('#efe8da'); else if (u < .75) col.set('#ffffff'); else if (u < .94) col.set('#d8cfbe'); else col.set('#f6c574');
     mesh.setColorAt(i, col);
   }
   mesh.instanceColor.needsUpdate = true;
@@ -819,11 +821,11 @@ if (renderer) {
   const dg = new THREE.BufferGeometry(), dp = [];
   for (let i = 0; i < 500; i++) dp.push((Math.random() - .5) * 60, Math.random() * 20 - 4, (Math.random() - .5) * 40 - 6);
   dg.setAttribute('position', new THREE.Float32BufferAttribute(dp, 3));
-  const dust = new THREE.Points(dg, new THREE.PointsMaterial({ color: 0x5B6270, size: .05, transparent: true, opacity: .5 }));
+  const dust = new THREE.Points(dg, new THREE.PointsMaterial({ color: 0xC9BFA9, size: .06, transparent: true, opacity: .6 }));
   scene.add(dust);
 
-  scene.add(new THREE.HemisphereLight(0xffffff, 0xd9cdb5, .95));
-  const key = new THREE.DirectionalLight(0xfff3dc, 1.05); key.position.set(6, 10, 8); scene.add(key);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xe7dcc6, 1.25));
+  const key = new THREE.DirectionalLight(0xfff3dc, .6); key.position.set(6, 10, 8); scene.add(key);
 
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
@@ -876,7 +878,8 @@ if (renderer) {
   let anchors = [];
   const measure = () => { anchors = secs.map(s => ({ y: s.offsetTop, h: s.offsetHeight, k: s.dataset.s, t: s.dataset.t })); };
   measure(); addEventListener('load', measure); setTimeout(measure, 1500);
-  addEventListener('resize', () => { W = innerWidth; H = innerHeight; mobile = W < 760; camera.aspect = W / H; camera.fov = mobile ? 52 : 36; camera.updateProjectionMatrix(); renderer.setSize(W, H); composer.setSize(W, H); measure(); });
+  let lastW = W;
+  addEventListener('resize', () => { const pw = W, ph = H; cvs(); if (W === pw && Math.abs(H - ph) < 1) return; mobile = W < 760; camera.aspect = W / H; camera.fov = mobile ? 52 : 36; camera.updateProjectionMatrix(); renderer.setSize(W, H, false); composer.setSize(W, H); measure(); });
 
   let mx = 0, my = 0, cmx = 0, cmy = 0, lastY = scrollY, vel = 0, t0 = performance.now(), last = t0;
   addEventListener('mousemove', e => { mx = e.clientX / W - .5; my = e.clientY / H - .5; });
