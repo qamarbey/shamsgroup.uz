@@ -118,7 +118,7 @@ header nav a:hover{opacity:1}
 /* pains (chaos) */
 .pains{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:50px}
 .pain{padding:26px 22px}
-.pain .q{font-family:Unbounded;font-weight:500;font-size:20px;line-height:1.25}
+.pain .q{font-family:Unbounded;font-weight:500;font-size:21px;line-height:1.3}
 .pain p{font-size:16px;color:var(--tosh);margin-top:10px}
 
 /* manifesto */
@@ -281,6 +281,8 @@ footer .logo{color:var(--tun);font-size:22px}
   footer{padding-bottom:100px}
 }
 @media (prefers-reduced-motion:reduce){.typing i{animation:none!important}}
+/* clean: chalg'ituvchi HUD detallari yashirilgan */
+.hud .br,.hud .bl,.tag3,#net,.cursor{display:none!important}
 </style>
 </head>
 <body>
@@ -314,9 +316,8 @@ footer .logo{color:var(--tun);font-size:22px}
 <!-- 01 HERO : sun assembled -->
 <section class="hero" data-s="hero" data-t="Boshlanish">
   <div class="wrap"><div class="in">
-    <span class="proof glass hero-in"><i>●</i>Hozir quryapmiz: Mega Plus supermarketi — 11 boʻlim</span>
     <h1 class="split">Biznesingizni <span class="mk">oʻzi ishlaydigan</span> tizimga aylantiramiz</h1>
-    <p class="lead hero-in">Takroriy va qiyin ishlarni sun’iy intellekt bajaradi, xatolarni ushlaydi va oldin qilib boʻlmaydigan tahlillarni beradi. Siz nazorat qilasiz — tizim bajaradi.</p>
+    <p class="lead hero-in">Ishni sun’iy intellekt bajaradi, siz esa har kuni aniq raqamlarni koʻrasiz.</p>
     <form class="lead-form hero-in" data-form="hero" novalidate>
       <div class="pill">
         <input name="name" autocomplete="name" placeholder="Ismingiz" aria-label="Ismingiz">
@@ -326,7 +327,7 @@ footer .logo{color:var(--tun);font-size:22px}
         <input type="hidden" name="service" value="Bepul tahlil">
         <button class="btn" type="submit">Bepul tahlil <span class="arr">→</span></button>
       </div>
-      <div class="pill-note"><span>✓ <b>30 daqiqa</b> — bepul tahlil</span><span>✓ Majburiyat yoʻq</span><span>✓ Butun Oʻzbekiston</span></div>
+      <div class="pill-note"><span><b>30 daqiqalik</b> bepul tahlil · majburiyat yoʻq</span></div>
       <div class="ok-msg glass"><span class="U">Rahmat! Arizangiz qabul qilindi.</span>Tez orada qoʻngʻiroq qilamiz. Shoshilinch boʻlsa: <a href="tel:+998500099866"><b>+998 50 009 98 66</b></a></div>
     </form>
   </div></div>
@@ -335,13 +336,12 @@ footer .logo{color:var(--tun);font-size:22px}
 <!-- 02 PAINS : chaos -->
 <section class="sec" id="muammo" data-s="chaos" data-t="Bugun">
   <div class="wrap">
-    <div class="k rv">Tanish holatmi?</div>
-    <h2 class="h2 split" style="margin-top:18px;max-width:880px">Soat 23:00. Doʻkon yopilgan, siz esa hali ham daftar varaqlayapsiz.</h2>
+    <h2 class="h2 split" style="max-width:880px">Soat 23:00. Doʻkon yopilgan, siz esa hali ham daftar varaqlayapsiz.</h2>
     <div class="pains">
-      <div class="pain glass rv"><div class="q">Kassada nega pul kam?</div><p>Kamomad oy oxirida chiqadi — qachon va kimda ekanini bilib boʻlmaydi.</p></div>
-      <div class="pain glass rv"><div class="q">Kim qancha qarz?</div><p>Nasiya 4–5 ta daftarda, yarmi xodimning xotirasida.</p></div>
-      <div class="pain glass rv"><div class="q">Omborda nima qoldi?</div><p>Tovar tugaganini mijoz soʻraganda bilasiz.</p></div>
-      <div class="pain glass rv"><div class="q">47 ta oʻqilmagan xabar</div><p>Buyurtma va savollar Telegram’da yoʻqolib ketadi.</p></div>
+      <div class="pain glass rv"><div class="q">Kassada nega pul kam?</div></div>
+      <div class="pain glass rv"><div class="q">Kim qancha qarz?</div></div>
+      <div class="pain glass rv"><div class="q">Omborda nima qoldi?</div></div>
+      <div class="pain glass rv"><div class="q">47 ta oʻqilmagan xabar</div></div>
     </div>
   </div>
 </section>
@@ -349,42 +349,36 @@ footer .logo{color:var(--tun);font-size:22px}
 <!-- 03 MANIFESTO : reassemble -->
 <section class="sec manifest" id="yondashuv" data-s="assemble" data-t="Yondashuv">
   <div class="wrap">
-    <div class="k">Bizning yondashuv</div>
-    <p class="scrub" style="margin-top:30px">Biz bitta bot yasab beradigan jamoa emasmiz. Biz biznesingizni <span class="mk">toʻliq tizimga</span> aylantiramiz: takroriy va qiyin ishlarni sun’iy intellekt bajaradi, siz esa oldin hech qachon koʻra olmagan raqamlarni har kuni koʻrasiz.</p>
-    <div class="sig rv"><b>shams<span style="color:var(--sun)">.</span></b> Har kuni. Oʻz vaqtida.</div>
+    <p class="scrub">Biz bitta bot yasamaymiz. Biznesingizni <span class="mk">toʻliq tizimga</span> aylantiramiz.</p>
   </div>
 </section>
 
 <!-- 04 PILLARS : sun aside -->
 <section class="sec" id="yonalish" data-s="aside" data-t="Imkoniyatlar" style="padding-top:40px">
   <div class="wrap">
-    <div class="k rv">Uch yoʻnalish — bitta tizim</div>
-    <h2 class="h2 split" style="margin-top:18px">Tizim nima qiladi?</h2>
+    <h2 class="h2 split">Tizim nima qiladi?</h2>
     <div class="stack">
       <article class="pcard solid">
         <div>
-          <div class="num">01 — AVTOMATLASHTIRISH</div>
+          <div class="num">01</div>
           <h3>Takroriy ishni tizim bajaradi</h3>
-          <p>Har kuni qoʻlda qilinadigan, vaqt oladigan va xatoga sabab boʻladigan ishlar endi oʻzi bajariladi.</p>
-          <ul><li>Nakladnoy, chek va hujjatlarni AI oʻqib kiritadi</li><li>Buyurtma va arizalar avtomatik qabul qilinadi</li><li>Toʻlovlar bank va kassa bilan solishtiriladi</li><li>Vazifa va eslatmalar oʻz vaqtida yuboriladi</li></ul>
+          <p>Hujjat kiritish, buyurtma, solishtirish va eslatmalar — oʻzi bajariladi.</p>
         </div>
         <div class="viz v1">
-          <div class="task"><span class="ck">✓</span>Nakladnoy #2481 oʻqildi va kiritildi<span class="t">4 s</span></div>
-          <div class="task"><span class="ck">✓</span>Kassa tushumi bank bilan solishtirildi<span class="t">2 s</span></div>
-          <div class="task"><span class="ck">✓</span>Yetkazib beruvchiga buyurtma ketdi<span class="t">1 s</span></div>
-          <div class="task"><span class="ck">✓</span>Muddati oʻtgan qarz — eslatma ketdi<span class="t">1 s</span></div>
-          <div class="task"><span class="ck">✓</span>Kunlik hisobot tayyor<span class="t">3 s</span></div>
+          <div class="task"><span class="ck">✓</span>Nakladnoy #2481 oʻqildi va kiritildi</div>
+          <div class="task"><span class="ck">✓</span>Kassa tushumi bank bilan solishtirildi</div>
+          <div class="task"><span class="ck">✓</span>Yetkazib beruvchiga buyurtma ketdi</div>
+                    <div class="task"><span class="ck">✓</span>Kunlik hisobot tayyor</div>
         </div>
       </article>
       <article class="pcard glass">
         <div>
-          <div class="num">02 — TAHLIL</div>
+          <div class="num">02</div>
           <h3>Oldin imkonsiz boʻlgan tahlillar</h3>
-          <p>Sun’iy intellekt minglab cheklar, xabarlar va qoʻngʻiroqlarni koʻrib chiqadi. Inson bunga oylab vaqt sarflardi.</p>
-          <ul><li>Qaysi tovar qachon tugashi — talab prognozi</li><li>Qaysi mijoz ketish arafasida</li><li>Kassir boʻyicha shubhali cheklar va chegirmalar</li><li>Qoʻngʻiroq va yozishmalar tahlili, raqobatchi narxlari</li></ul>
+          <p>Qaysi tovar tugashi, qaysi mijoz ketishi, qayerda pul yoʻqolishi — oldindan koʻrasiz.</p>
         </div>
         <div class="viz v2" style="background:var(--oq)">
-          <div class="chart-h"><div><small>SOTUV · PROGNOZ</small><div class="U">+18%</div></div><small>NAMUNA</small></div>
+          <div class="chart-h"><div><small>SOTUV · PROGNOZ</small><div class="U">+18%</div></div></div>
           <div class="chart">
             <svg viewBox="0 0 400 190" aria-hidden="true">
               <line x1="0" y1="180" x2="400" y2="180" stroke="#E2DACA" stroke-width="1.5"/>
@@ -400,10 +394,9 @@ footer .logo{color:var(--tun);font-size:22px}
       </article>
       <article class="pcard">
         <div>
-          <div class="num">03 — NAZORAT</div>
+          <div class="num">03</div>
           <h3>Butun biznes — bitta ekranda</h3>
-          <p>Har kuni ertalab hisobot telefoningizda. Savol bersangiz — AI-yordamchi darhol javob beradi.</p>
-          <ul><li>Savdo, qoldiq, kassa va xodimlar bitta panelda</li><li>Muhim hodisa boʻlsa — oʻsha zahoti xabar</li><li>Haftalik tahlil va aniq tavsiyalar</li></ul>
+          <p>Har kuni ertalab hisobot telefoningizda. Savol bering — AI darhol javob beradi.</p>
         </div>
         <div class="viz v3">
           <div class="bub me">Kecha qancha sotdik? Nima tugayapti?</div>
@@ -419,17 +412,16 @@ footer .logo{color:var(--tun);font-size:22px}
 <!-- 05 SYSTEM : data ring -->
 <section class="sys" id="tizim" data-s="ring" data-t="Qanday ishlaydi">
   <div class="wrap">
-    <div class="k rv">Qanday ishlaydi</div>
-    <h2 class="h2 split" style="margin-top:18px;max-width:980px">Hamma maʼlumot bir joyga yigʻiladi — <span class="mk">sun’iy intellekt</span> ishlaydi</h2>
-    <p class="lead rv" style="margin-top:22px;max-width:640px">Mavjud dasturlaringizni tashlash shart emas. Kassa, 1C, jadvallar, Telegram, qoʻngʻiroqlar va kameralar — hammasi bitta tizimga ulanadi.</p>
+    <h2 class="h2 split" style="max-width:980px">Hamma maʼlumot bir joyga yigʻiladi — <span class="mk">sun’iy intellekt</span> ishlaydi</h2>
+    <p class="lead rv" style="margin-top:22px;max-width:640px">Kassa, 1C, jadvallar va Telegram — hammasi bitta tizimga ulanadi.</p>
   </div>
   <div class="gap"></div>
   <div class="wrap">
     <div class="steps">
-      <div class="step glass rv"><div class="n">01</div><h3>Bepul tahlil</h3><p>Jarayonlaringizni koʻrib, eng koʻp vaqt va pul ketayotgan joylarni aniqlaymiz.</p></div>
-      <div class="step glass rv"><div class="n">02</div><h3>Loyiha va narx</h3><p>Qaysi boʻlimlar avtomatlashishi, muddat va narxni yozma beramiz.</p></div>
-      <div class="step glass rv"><div class="n">03</div><h3>Bosqichma-bosqich qurish</h3><p>Har bosqich oxirida natijani amalda koʻrasiz — biznes toʻxtamaydi.</p></div>
-      <div class="step glass rv"><div class="n">04</div><h3>Oʻqitish va rivojlantirish</h3><p>Xodimlarni oʻrgatamiz, tizimni biznesingiz bilan birga oʻstiramiz.</p></div>
+      <div class="step glass rv"><div class="n">01</div><h3>Bepul tahlil</h3><p>Pul va vaqt qayerda ketayotganini topamiz.</p></div>
+      <div class="step glass rv"><div class="n">02</div><h3>Loyiha va narx</h3><p>Muddat va narxni yozma beramiz.</p></div>
+      <div class="step glass rv"><div class="n">03</div><h3>Qurish</h3><p>Har bosqich natijasini koʻrib borasiz.</p></div>
+      <div class="step glass rv"><div class="n">04</div><h3>Oʻqitish</h3><p>Xodimlarni oʻzimiz oʻrgatamiz.</p></div>
     </div>
   </div>
 </section>
@@ -437,15 +429,13 @@ footer .logo{color:var(--tun);font-size:22px}
 <!-- 06 CASES : growth bars -->
 <section class="sec" id="keyslar" data-s="bars" data-t="Keyslar">
   <div class="wrap">
-    <div class="k rv">Haqiqiy loyihalar</div>
-    <h2 class="h2 split" style="margin-top:18px;max-width:760px">Biz quryapmiz — ular ishlatyapti</h2>
+    <h2 class="h2 split" style="max-width:760px">Biz quryapmiz — ular ishlatyapti</h2>
     <div class="cgrid">
       <article class="case solid rv">
         <div class="tag">SUPERMARKET · HOZIR JARAYONDA</div>
         <h3>Mega Plus supermarketini oʻzi ishlaydigan tizimga aylantiramiz</h3>
-        <p>Xariddan rahbar paneligacha — 11 boʻlim bitta tizimga ulanadi.</p>
+        <p>Xariddan rahbar paneligacha — bitta tizim.</p>
         <div class="cnt"><div><b class="count" data-to="11">11</b><small>boʻlim</small></div><div><b><span class="count" data-to="2">2</span> oy</b><small>ishga tushirish</small></div></div>
-        <div class="mods"><span>Xarid</span><span>Ombor</span><span>Savdo zali</span><span>Kassa</span><span>Xavfsizlik</span><span>Moliya</span><span>Narxlash</span><span>Marketing</span><span>AI boʻlimi</span><span>Kadrlar</span><span>Rahbariyat</span></div>
       </article>
       <article class="case solid rv">
         <div class="ph"><img class="par" src="img/wooden.jpg" alt="Wooden yogʻoch sexi" loading="lazy"></div>
@@ -455,49 +445,37 @@ footer .logo{color:var(--tun);font-size:22px}
         <div class="ba"><div><small>AVVAL</small><b>4–5 ta</b>qarz daftari</div><div><small>HOZIR</small><b>1 tizim</b>hammasi bir joyda</div></div>
       </article>
     </div>
-    <div style="margin-top:90px">
-      <div class="k rv">Kimlar uchun</div>
-      <div class="ind">
-        <span class="glass rv">Supermarket va savdo</span><span class="glass rv">Ulgurji va ombor</span><span class="glass rv">Ishlab chiqarish</span><span class="glass rv">Klinikalar</span><span class="glass rv">Oʻquv markazlari</span><span class="glass rv">Logistika</span><span class="glass rv">Restoran va kafe</span><span class="glass rv">Qurilish</span>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- 07 PRICING : sun far -->
 <section class="sec" id="narxlar" data-s="far" data-t="Narxlar">
   <div class="wrap">
-    <div class="k rv">Xizmatlar va narxlar</div>
-    <h2 class="h2 split" style="margin-top:18px">Bir marta toʻlaysiz — tizim sizniki</h2>
+    <h2 class="h2 split">Bir marta toʻlaysiz — tizim sizniki</h2>
     <div class="prices">
       <div class="price hl rv">
-        <div class="kk">ASOSIY XIZMAT</div>
         <h3>Korxona uchun toʻliq AI tizim</h3>
         <div class="amt">$10 000</div><div class="per">dan · loyiha hajmiga qarab</div>
-        <ul><li>11 boʻlimgacha: xarid, ombor, kassa, moliya, HR</li><li>AI tahlil, prognoz va ogohlantirishlar</li><li>Rahbar paneli va AI-yordamchi</li><li>2 oyda ishga tushirish va oʻqitish</li></ul>
-        <a class="btn" href="#ariza" data-service="Korporativ AI tizim">Ariza qoldirish <span class="arr">→</span></a>
+        <ul><li>Butun korxona — 11 boʻlimgacha</li><li>AI tahlil va rahbar paneli</li><li>2 oyda ishga tushirish</li></ul>
+        <a class="btn" href="#ariza" data-service="Korporativ AI tizim">Ariza <span class="arr">→</span></a>
       </div>
       <div class="price solid rv">
-        <div class="kk">KICHIK VA OʻRTA BIZNES</div>
         <h3>Biznes hisob tizimi</h3>
         <div class="amt">$2 000</div><div class="per">dan</div>
-        <ul><li>Savdo, kassa, qarz, ombor</li><li>Ovozli xabar va chek rasmi</li><li>Har kuni hisobot</li></ul>
+        <ul><li>Savdo, kassa, qarz, ombor</li><li>Har kuni hisobot</li></ul>
         <a class="btn" href="#ariza" data-service="Biznes hisob tizimi">Ariza <span class="arr">→</span></a>
       </div>
       <div class="price solid rv">
-        <div class="kk">SOTUV</div>
         <h3>AI sotuvchi</h3>
         <div class="amt">$1 000</div><div class="per">dan</div>
-        <ul><li>Mijozlarga 24/7 javob</li><li>Telegram, Instagram, sayt</li><li>Arizalar CRM’ga tushadi</li></ul>
+        <ul><li>Mijozlarga 24/7 javob</li><li>Telegram, Instagram, sayt</li></ul>
         <a class="btn" href="#ariza" data-service="AI sotuvchi">Ariza <span class="arr">→</span></a>
       </div>
     </div>
     <div class="faq" id="savollar">
-      <details class="glass"><summary>Mavjud dasturlarimizni tashlashimiz kerakmi?</summary><p>Yoʻq. Kassa dasturi, 1C, jadvallar va Telegram — hammasini tizimga ulaymiz. Xodimlar odatlangan ish tartibi saqlanadi, faqat qoʻl mehnati kamayadi.</p></details>
-      <details class="glass"><summary>Xodimlarim buni oʻrgana oladimi?</summary><p>Telefondan foydalana oladigan har kim ishlata oladi. Har bir boʻlim ishga tushganda xodimlarni oʻzimiz oʻrgatamiz.</p></details>
-      <details class="glass"><summary>Qancha vaqtda natija koʻraman?</summary><p>Ish bosqichma-bosqich boradi — birinchi natijani birinchi bosqich oxirida koʻrasiz. Butun korxona uchun tizim taxminan 2 oyda toʻliq topshiriladi. Aniq muddatni bepul tahlildan keyin yozma aytamiz.</p></details>
-      <details class="glass"><summary>Toʻlov qanday boʻladi?</summary><p>Tizim uchun bir marta toʻlaysiz — u sizniki boʻladi. AI xarajatlari va qoʻllab-quvvatlash uchun oylik toʻlov ixtiyoriy.</p></details>
-      <details class="glass"><summary>Qaysi shaharlarda ishlaysiz?</summary><p>Butun Oʻzbekiston boʻylab onlayn ishlaymiz. Kerak boʻlsa, uchrashuvga oʻzimiz boramiz.</p></details>
+      <details class="glass"><summary>Mavjud dasturlarimizni tashlashimiz kerakmi?</summary><p>Yoʻq. Kassa dasturi, 1C, jadvallar va Telegram — hammasini tizimga ulaymiz.</p></details>
+      <details class="glass"><summary>Qancha vaqtda natija koʻraman?</summary><p>Birinchi natija — birinchi bosqich oxirida. Butun korxona uchun tizim taxminan 2 oyda topshiriladi.</p></details>
+      <details class="glass"><summary>Toʻlov qanday boʻladi?</summary><p>Bir marta toʻlaysiz — tizim sizniki boʻladi.</p></details>
     </div>
   </div>
 </section>
@@ -506,12 +484,10 @@ footer .logo{color:var(--tun);font-size:22px}
 <section class="final" id="ariza" data-s="sunrise" data-t="Ariza">
   <div class="wrap">
     <div>
-      <div class="k rv">Har kuni. Oʻz vaqtida.</div>
-      <h2 class="split" style="margin-top:18px">30 daqiqada biznesingizda <span class="mk">qayerda pul yoʻqolayotganini</span> koʻrsatamiz</h2>
-      <p class="lead rv">Tahlil bepul va hech narsaga majburlamaydi. Arizani qoldiring — mutaxassisimiz qoʻngʻiroq qiladi.</p>
+      <h2 class="split"><span class="mk">Pul qayerda yoʻqolayotganini</span> 30 daqiqada koʻrsatamiz</h2>
+      <p class="lead rv">Tahlil bepul. Arizani qoldiring — oʻzimiz qoʻngʻiroq qilamiz.</p>
       <div class="contacts rv">
         <a class="btn ln sm" href="tel:+998500099866">+998 50 009 98 66</a>
-        <a class="btn ln sm" href="https://www.instagram.com/shams_group_uz/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
     <div class="fcard solid rv">
@@ -520,7 +496,7 @@ footer .logo{color:var(--tun);font-size:22px}
         <div class="s">Ikki maydon — 20 soniya.</div>
         <label class="field"><span>ISMINGIZ</span><input name="name" autocomplete="name" placeholder="Masalan, Akmal"></label>
         <label class="field"><span>TELEFON RAQAMINGIZ</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+998 __ ___ __ __"></label>
-        <label class="field"><span>SIZNI NIMA QIZIQTIRADI? (IXTIYORIY)</span>
+        <label class="field"><span>XIZMAT (IXTIYORIY)</span>
           <select name="service"><option>Bepul tahlil</option><option>Korporativ AI tizim</option><option>Biznes hisob tizimi</option><option>AI sotuvchi</option></select>
         </label>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -537,7 +513,7 @@ footer .logo{color:var(--tun);font-size:22px}
 <footer>
   <div class="wrap">
     <a class="logo" href="#top">shams<i>.</i></a>
-    <span>Biznes jarayonlarini sun’iy intellekt yordamida avtomatlashtirish · Butun Oʻzbekiston</span>
+    <span>Butun Oʻzbekiston</span>
     <span>© 2026 Shams Group</span>
   </div>
 </footer>
